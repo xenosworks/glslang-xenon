@@ -1,13 +1,6 @@
 // Copyright (C) 2026 The glslang-xenon contributors
 // SPDX-License-Identifier: BSD-3-Clause
-//
-// Compiles every GLSL program of Dusklight's shader pack on the Xbox 360 through glslang, as `glslang -V` does on the
-// PC (README-xsdk.md): Vulkan 1.0 rules, SPIR-V 1.0, no optimiser. Logs each program's time and whether its SPIR-V is
-// the one the PC's glslang made, then the heap and stack compiling took, PASS or FAIL for each check, and
-// "tests: <passed> passed, <failed> failed".
-//
-// Built with GLSLANG_XSDK_BREAK, it targets SPIR-V 1.3 instead, so no program's SPIR-V is the PC's: the check that
-// compares them is broken on purpose.
+// Compiles Dusklight's GLSL programs as `glslang -V` does on the PC and checks each against the PC's SPIR-V.
 
 #include "SPIRV/GlslangToSpv.h"
 #include "glslang/Public/ResourceLimits.h"
@@ -25,13 +18,13 @@
 
 namespace {
 
-// The thread that compiles: its stack, the part of it next to its first frame left unpainted, as the kernel may keep
-// some of the stack's top for itself, and a margin below the frame that paints.
+// The compiling thread's stack; painting leaves its top, which the kernel may use, and a margin below the painter.
 constexpr size_t StackBytes = 1024 * 1024;
 constexpr size_t StackTopMargin = 64 * 1024;
 constexpr size_t PaintMargin = 4 * 1024;
 constexpr uint32_t Paint = 0x5A17C0DEu;
 
+// Built with GLSLANG_XSDK_BREAK, no program's SPIR-V is the PC's, on purpose.
 #ifdef GLSLANG_XSDK_BREAK
 constexpr glslang::EShTargetLanguageVersion TargetSpirv = glslang::EShTargetSpv_1_3;
 #else

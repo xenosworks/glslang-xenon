@@ -1,8 +1,4 @@
-# Checks glslang on the Xbox 360 through xsdk (README-xsdk.md). Build xsdk first, then:
-#   cmake -S xsdk -B build-xsdk -GNinja -DCMAKE_TOOLCHAIN_FILE=<xsdk>/cmake/xsdk.cmake -DCMAKE_BUILD_TYPE=Release \
-#       -DGLSLANG_XSDK_SHADERS=<dusklight-xenon>/platforms/xenon/shaders \
-#       -DGLSLANG_XSDK_PACK=<dusklight-xenon>/platforms/xenon/glsl_pack.c
-#   cmake --build build-xsdk
+# Checks glslang on the Xbox 360 through xsdk; README-xsdk.md says how to build it.
 cmake_minimum_required(VERSION 3.22.1)
 project(glslang_xsdk_checks CXX)
 
