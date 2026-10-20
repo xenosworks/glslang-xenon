@@ -280,6 +280,9 @@ diff -b $BASEDIR/hlsl.structbuffer.incdec.frag.hlslfun1.out "$TARGETDIR/hlsl.str
 run -H -e main -D -Od -fhlsl_functionality1 hlsl.noSemantic.functionality1.comp > \
     "$TARGETDIR/hlsl.noSemantic.functionality1.comp.out"
 diff -b $BASEDIR/hlsl.noSemantic.functionality1.comp.out "$TARGETDIR/hlsl.noSemantic.functionality1.comp.out" || HASERROR=1
+run -H -e main -D -Od --hlsl-dx9-compatible -fhlsl_functionality1 hlsl.dx9.registers.frag > \
+    "$TARGETDIR/hlsl.dx9.registers.frag.out"
+diff -b $BASEDIR/hlsl.dx9.registers.frag.out "$TARGETDIR/hlsl.dx9.registers.frag.out" || HASERROR=1
 
 #
 # Testing HLSL-specific PP feature expansion

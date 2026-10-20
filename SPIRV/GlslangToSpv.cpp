@@ -6454,6 +6454,13 @@ void TGlslangToSpvTraverser::decorateStructType(const glslang::TType& type,
                                         memberQualifier.semanticName);
         }
 
+        // A DX9 boolean or integer register, a second UserSemantic (SPIRV-Tools val: AtMostOncePerMember)
+        if (glslangIntermediate->getHlslFunctionality1() && memberQualifier.hlslRegister != nullptr) {
+            builder.addExtension("SPV_GOOGLE_hlsl_functionality1");
+            builder.addMemberDecoration(spvType, member, spv::Decoration::HlslSemanticGOOGLE,
+                                        memberQualifier.hlslRegister);
+        }
+
         if (builtIn == spv::BuiltIn::Layer) {
             // SPV_NV_viewport_array2 extension
             if (glslangMember.getQualifier().layoutViewportRelative){

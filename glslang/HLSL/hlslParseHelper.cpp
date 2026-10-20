@@ -6480,9 +6480,21 @@ void HlslParseContext::handleRegister(const TSourceLoc& loc, TQualifier& qualifi
             }
         }
         break;
+    case 'i':
+        // DX9's integer constant registers, kept below
+        if (! hlslDX9Compatible())
+            warn(loc, "ignoring unrecognized register type", "register", "%c", desc[0]);
+        break;
     default:
         warn(loc, "ignoring unrecognized register type", "register", "%c", desc[0]);
         break;
+    }
+
+    // DX9's boolean and integer registers, kept as a string, as SPIR-V gives a $Global member no binding
+    if (hlslDX9Compatible() && (std::tolower(desc[0]) == 'b' || std::tolower(desc[0]) == 'i')) {
+        char registerName[32];
+        snprintf(registerName, sizeof(registerName), "register(%c%d)", std::tolower(desc[0]), regNumber + subComponent);
+        qualifier.hlslRegister = intermediate.addSemanticName(registerName);
     }
 
     // space

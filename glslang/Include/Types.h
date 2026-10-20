@@ -525,6 +525,7 @@ public:
     void makeTemporary()
     {
         semanticName = nullptr;
+        hlslRegister = nullptr;
         storage = EvqTemporary;
         builtIn = EbvNone;
         clearInterstage();
@@ -579,6 +580,7 @@ public:
     }
 
     const char*         semanticName;
+    const char*         hlslRegister; // a DX9 boolean or integer register, as "register(b3)" or "register(i0)"
     TStorageQualifier   storage   : 7;
     static_assert(EvqLast < 64, "need to increase size of TStorageQualifier bitfields!");
     TBuiltInVariable    builtIn   : 9;
