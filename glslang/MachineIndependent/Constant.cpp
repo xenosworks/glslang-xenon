@@ -952,7 +952,9 @@ TIntermTyped* TIntermediate::fold(TIntermAggregate* aggrNode)
             {
                 double arg0 = childConstUnions[0][arg0comp].getDConst();
                 double arg1 = childConstUnions[1][arg1comp].getDConst();
-                double result = arg0 - arg1 * floor(arg0 / arg1);
+                // HLSL's fmod truncates the quotient (see decomposeIntrinsic), GLSL's mod floors it.
+                double quotient = getSource() == EShSourceHlsl ? trunc(arg0 / arg1) : floor(arg0 / arg1);
+                double result = arg0 - arg1 * quotient;
                 newConstArray[comp].setDConst(result);
                 break;
             }

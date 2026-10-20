@@ -4900,6 +4900,62 @@ void HlslParseContext::decomposeIntrinsic(const TSourceLoc& loc, TIntermTyped*& 
             break;
         }
 
+    case EOpMod:
+        {
+            // fmod(x, y) -> x - y * trunc(x / y), the sign of x; OpFMod's is y's (SPIR-V 1.0, section 3.32.13)
+            TIntermTyped* arg0 = argAggregate->getSequence()[0]->getAsTyped();
+            TIntermTyped* arg1 = argAggregate->getSequence()[1]->getAsTyped();
+
+            // Temporaries, so each argument is evaluated once.
+            TVariable* x = makeInternalVariable("@fmodx", arg0->getType());
+            x->getWritableType().getQualifier().makeTemporary();
+            TVariable* y = makeInternalVariable("@fmody", arg1->getType());
+            y->getWritableType().getQualifier().makeTemporary();
+
+            TIntermTyped* xAssign = intermediate.addAssign(EOpAssign, intermediate.addSymbol(*x, loc), arg0, loc);
+            TIntermTyped* yAssign = intermediate.addAssign(EOpAssign, intermediate.addSymbol(*y, loc), arg1, loc);
+
+            // A matrix's columns one at a time, as GLSL.std.450's Trunc takes no matrix.
+            const auto remainderOf = [&](int column) -> TIntermTyped* {
+                const auto operand = [&](TVariable* v) -> TIntermTyped* {
+                    TIntermTyped* symbol = intermediate.addSymbol(*v, loc);
+                    if (column < 0)
+                        return symbol;
+                    TIntermTyped* index = intermediate.addIndex(EOpIndexDirect, symbol,
+                                                                intermediate.addConstantUnion(column, loc), loc);
+                    index->setType(TType(v->getType(), 0));
+                    return index;
+                };
+                TIntermTyped* quotient = handleBinaryMath(loc, "fmod", EOpDiv, operand(x), operand(y));
+                TIntermTyped* whole = handleUnaryMath(loc, "fmod", EOpTrunc, quotient);
+                TIntermTyped* product = handleBinaryMath(loc, "fmod", EOpMul, operand(y), whole);
+                return handleBinaryMath(loc, "fmod", EOpSub, operand(x), product);
+            };
+
+            TIntermTyped* remainder = nullptr;
+            if (arg0->isMatrix()) {
+                TIntermAggregate* columns = new TIntermAggregate(intermediate.mapTypeToConstructorOp(arg0->getType()));
+                for (int column = 0; column < arg0->getMatrixCols(); ++column)
+                    columns->getSequence().push_back(remainderOf(column));
+                columns->setType(arg0->getType());
+                columns->getWritableType().getQualifier().makeTemporary();
+                columns->setLoc(loc);
+                remainder = columns;
+            } else
+                remainder = remainderOf(-1);
+
+            TIntermAggregate* compoundStatement = intermediate.makeAggregate(xAssign, loc);
+            compoundStatement = intermediate.growAggregate(compoundStatement, yAssign);
+            compoundStatement = intermediate.growAggregate(compoundStatement, remainder);
+            compoundStatement->setOperator(EOpSequence);
+            compoundStatement->setLoc(loc);
+            compoundStatement->setType(node->getType());
+
+            node = compoundStatement;
+
+            break;
+        }
+
     case EOpRcp:
         {
             // rcp(a) -> 1 / a

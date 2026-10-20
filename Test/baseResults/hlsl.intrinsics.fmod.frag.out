@@ -1,0 +1,441 @@
+hlsl.intrinsics.fmod.frag
+Shader version: 500
+gl_FragCoord origin is upper left
+0:? Sequence
+0:4  Function Definition: @main(vf4;vf4;mf22; ( temp 4-component vector of float)
+0:4    Function Parameters: 
+0:4      'a' ( in 4-component vector of float)
+0:4      'b' ( in 4-component vector of float)
+0:4      'm' ( in 2X2 matrix of float)
+0:?     Sequence
+0:5      Sequence
+0:5        move second child to first child ( temp 2X2 matrix of float)
+0:5          'r' ( temp 2X2 matrix of float)
+0:5          Sequence
+0:5            move second child to first child ( temp 2X2 matrix of float)
+0:5              '@fmodx' ( temp 2X2 matrix of float)
+0:5              'm' ( in 2X2 matrix of float)
+0:5            move second child to first child ( temp 2X2 matrix of float)
+0:5              '@fmody' ( temp 2X2 matrix of float)
+0:5              Construct mat2 ( temp 2X2 matrix of float)
+0:5                direct index ( temp float)
+0:5                  'b' ( in 4-component vector of float)
+0:5                  Constant:
+0:5                    0 (const int)
+0:5                direct index ( temp float)
+0:5                  'b' ( in 4-component vector of float)
+0:5                  Constant:
+0:5                    1 (const int)
+0:5                direct index ( temp float)
+0:5                  'b' ( in 4-component vector of float)
+0:5                  Constant:
+0:5                    2 (const int)
+0:5                direct index ( temp float)
+0:5                  'b' ( in 4-component vector of float)
+0:5                  Constant:
+0:5                    3 (const int)
+0:5            Construct mat2 ( temp 2X2 matrix of float)
+0:5              subtract ( temp 2-component vector of float)
+0:5                direct index ( temp 2-component vector of float)
+0:5                  '@fmodx' ( temp 2X2 matrix of float)
+0:5                  Constant:
+0:5                    0 (const int)
+0:5                component-wise multiply ( temp 2-component vector of float)
+0:5                  direct index ( temp 2-component vector of float)
+0:5                    '@fmody' ( temp 2X2 matrix of float)
+0:5                    Constant:
+0:5                      0 (const int)
+0:5                  trunc ( temp 2-component vector of float)
+0:5                    divide ( temp 2-component vector of float)
+0:5                      direct index ( temp 2-component vector of float)
+0:5                        '@fmodx' ( temp 2X2 matrix of float)
+0:5                        Constant:
+0:5                          0 (const int)
+0:5                      direct index ( temp 2-component vector of float)
+0:5                        '@fmody' ( temp 2X2 matrix of float)
+0:5                        Constant:
+0:5                          0 (const int)
+0:5              subtract ( temp 2-component vector of float)
+0:5                direct index ( temp 2-component vector of float)
+0:5                  '@fmodx' ( temp 2X2 matrix of float)
+0:5                  Constant:
+0:5                    1 (const int)
+0:5                component-wise multiply ( temp 2-component vector of float)
+0:5                  direct index ( temp 2-component vector of float)
+0:5                    '@fmody' ( temp 2X2 matrix of float)
+0:5                    Constant:
+0:5                      1 (const int)
+0:5                  trunc ( temp 2-component vector of float)
+0:5                    divide ( temp 2-component vector of float)
+0:5                      direct index ( temp 2-component vector of float)
+0:5                        '@fmodx' ( temp 2X2 matrix of float)
+0:5                        Constant:
+0:5                          1 (const int)
+0:5                      direct index ( temp 2-component vector of float)
+0:5                        '@fmody' ( temp 2X2 matrix of float)
+0:5                        Constant:
+0:5                          1 (const int)
+0:6      Branch: Return with expression
+0:6        add ( temp 4-component vector of float)
+0:6          Construct vec4 ( temp 4-component vector of float)
+0:6            Constant:
+0:6              -1.500000
+0:6            Constant:
+0:6              1.500000
+0:6            direct index ( temp float)
+0:6              direct index ( temp 2-component vector of float)
+0:6                'r' ( temp 2X2 matrix of float)
+0:6                Constant:
+0:6                  0 (const int)
+0:6              Constant:
+0:6                1 (const int)
+0:6            direct index ( temp float)
+0:6              direct index ( temp 2-component vector of float)
+0:6                'r' ( temp 2X2 matrix of float)
+0:6                Constant:
+0:6                  1 (const int)
+0:6              Constant:
+0:6                0 (const int)
+0:6          Sequence
+0:6            move second child to first child ( temp 4-component vector of float)
+0:6              '@fmodx' ( temp 4-component vector of float)
+0:6              'a' ( in 4-component vector of float)
+0:6            move second child to first child ( temp 4-component vector of float)
+0:6              '@fmody' ( temp 4-component vector of float)
+0:6              'b' ( in 4-component vector of float)
+0:6            subtract ( temp 4-component vector of float)
+0:6              '@fmodx' ( temp 4-component vector of float)
+0:6              component-wise multiply ( temp 4-component vector of float)
+0:6                '@fmody' ( temp 4-component vector of float)
+0:6                trunc ( temp 4-component vector of float)
+0:6                  divide ( temp 4-component vector of float)
+0:6                    '@fmodx' ( temp 4-component vector of float)
+0:6                    '@fmody' ( temp 4-component vector of float)
+0:4  Function Definition: main( ( temp void)
+0:4    Function Parameters: 
+0:?     Sequence
+0:4      move second child to first child ( temp 4-component vector of float)
+0:?         'a' ( temp 4-component vector of float)
+0:?         'a' (layout( location=0) in 4-component vector of float)
+0:4      move second child to first child ( temp 4-component vector of float)
+0:?         'b' ( temp 4-component vector of float)
+0:?         'b' (layout( location=1) in 4-component vector of float)
+0:4      move second child to first child ( temp 2X2 matrix of float)
+0:?         'm' ( temp 2X2 matrix of float)
+0:?         'm' (layout( location=2) in 2X2 matrix of float)
+0:4      move second child to first child ( temp 4-component vector of float)
+0:?         '@entryPointOutput' (layout( location=0) out 4-component vector of float)
+0:4        Function Call: @main(vf4;vf4;mf22; ( temp 4-component vector of float)
+0:?           'a' ( temp 4-component vector of float)
+0:?           'b' ( temp 4-component vector of float)
+0:?           'm' ( temp 2X2 matrix of float)
+0:?   Linker Objects
+0:?     '@entryPointOutput' (layout( location=0) out 4-component vector of float)
+0:?     'a' (layout( location=0) in 4-component vector of float)
+0:?     'b' (layout( location=1) in 4-component vector of float)
+0:?     'm' (layout( location=2) in 2X2 matrix of float)
+
+
+Linked fragment stage:
+
+
+Shader version: 500
+gl_FragCoord origin is upper left
+0:? Sequence
+0:4  Function Definition: @main(vf4;vf4;mf22; ( temp 4-component vector of float)
+0:4    Function Parameters: 
+0:4      'a' ( in 4-component vector of float)
+0:4      'b' ( in 4-component vector of float)
+0:4      'm' ( in 2X2 matrix of float)
+0:?     Sequence
+0:5      Sequence
+0:5        move second child to first child ( temp 2X2 matrix of float)
+0:5          'r' ( temp 2X2 matrix of float)
+0:5          Sequence
+0:5            move second child to first child ( temp 2X2 matrix of float)
+0:5              '@fmodx' ( temp 2X2 matrix of float)
+0:5              'm' ( in 2X2 matrix of float)
+0:5            move second child to first child ( temp 2X2 matrix of float)
+0:5              '@fmody' ( temp 2X2 matrix of float)
+0:5              Construct mat2 ( temp 2X2 matrix of float)
+0:5                direct index ( temp float)
+0:5                  'b' ( in 4-component vector of float)
+0:5                  Constant:
+0:5                    0 (const int)
+0:5                direct index ( temp float)
+0:5                  'b' ( in 4-component vector of float)
+0:5                  Constant:
+0:5                    1 (const int)
+0:5                direct index ( temp float)
+0:5                  'b' ( in 4-component vector of float)
+0:5                  Constant:
+0:5                    2 (const int)
+0:5                direct index ( temp float)
+0:5                  'b' ( in 4-component vector of float)
+0:5                  Constant:
+0:5                    3 (const int)
+0:5            Construct mat2 ( temp 2X2 matrix of float)
+0:5              subtract ( temp 2-component vector of float)
+0:5                direct index ( temp 2-component vector of float)
+0:5                  '@fmodx' ( temp 2X2 matrix of float)
+0:5                  Constant:
+0:5                    0 (const int)
+0:5                component-wise multiply ( temp 2-component vector of float)
+0:5                  direct index ( temp 2-component vector of float)
+0:5                    '@fmody' ( temp 2X2 matrix of float)
+0:5                    Constant:
+0:5                      0 (const int)
+0:5                  trunc ( temp 2-component vector of float)
+0:5                    divide ( temp 2-component vector of float)
+0:5                      direct index ( temp 2-component vector of float)
+0:5                        '@fmodx' ( temp 2X2 matrix of float)
+0:5                        Constant:
+0:5                          0 (const int)
+0:5                      direct index ( temp 2-component vector of float)
+0:5                        '@fmody' ( temp 2X2 matrix of float)
+0:5                        Constant:
+0:5                          0 (const int)
+0:5              subtract ( temp 2-component vector of float)
+0:5                direct index ( temp 2-component vector of float)
+0:5                  '@fmodx' ( temp 2X2 matrix of float)
+0:5                  Constant:
+0:5                    1 (const int)
+0:5                component-wise multiply ( temp 2-component vector of float)
+0:5                  direct index ( temp 2-component vector of float)
+0:5                    '@fmody' ( temp 2X2 matrix of float)
+0:5                    Constant:
+0:5                      1 (const int)
+0:5                  trunc ( temp 2-component vector of float)
+0:5                    divide ( temp 2-component vector of float)
+0:5                      direct index ( temp 2-component vector of float)
+0:5                        '@fmodx' ( temp 2X2 matrix of float)
+0:5                        Constant:
+0:5                          1 (const int)
+0:5                      direct index ( temp 2-component vector of float)
+0:5                        '@fmody' ( temp 2X2 matrix of float)
+0:5                        Constant:
+0:5                          1 (const int)
+0:6      Branch: Return with expression
+0:6        add ( temp 4-component vector of float)
+0:6          Construct vec4 ( temp 4-component vector of float)
+0:6            Constant:
+0:6              -1.500000
+0:6            Constant:
+0:6              1.500000
+0:6            direct index ( temp float)
+0:6              direct index ( temp 2-component vector of float)
+0:6                'r' ( temp 2X2 matrix of float)
+0:6                Constant:
+0:6                  0 (const int)
+0:6              Constant:
+0:6                1 (const int)
+0:6            direct index ( temp float)
+0:6              direct index ( temp 2-component vector of float)
+0:6                'r' ( temp 2X2 matrix of float)
+0:6                Constant:
+0:6                  1 (const int)
+0:6              Constant:
+0:6                0 (const int)
+0:6          Sequence
+0:6            move second child to first child ( temp 4-component vector of float)
+0:6              '@fmodx' ( temp 4-component vector of float)
+0:6              'a' ( in 4-component vector of float)
+0:6            move second child to first child ( temp 4-component vector of float)
+0:6              '@fmody' ( temp 4-component vector of float)
+0:6              'b' ( in 4-component vector of float)
+0:6            subtract ( temp 4-component vector of float)
+0:6              '@fmodx' ( temp 4-component vector of float)
+0:6              component-wise multiply ( temp 4-component vector of float)
+0:6                '@fmody' ( temp 4-component vector of float)
+0:6                trunc ( temp 4-component vector of float)
+0:6                  divide ( temp 4-component vector of float)
+0:6                    '@fmodx' ( temp 4-component vector of float)
+0:6                    '@fmody' ( temp 4-component vector of float)
+0:4  Function Definition: main( ( temp void)
+0:4    Function Parameters: 
+0:?     Sequence
+0:4      move second child to first child ( temp 4-component vector of float)
+0:?         'a' ( temp 4-component vector of float)
+0:?         'a' (layout( location=0) in 4-component vector of float)
+0:4      move second child to first child ( temp 4-component vector of float)
+0:?         'b' ( temp 4-component vector of float)
+0:?         'b' (layout( location=1) in 4-component vector of float)
+0:4      move second child to first child ( temp 2X2 matrix of float)
+0:?         'm' ( temp 2X2 matrix of float)
+0:?         'm' (layout( location=2) in 2X2 matrix of float)
+0:4      move second child to first child ( temp 4-component vector of float)
+0:?         '@entryPointOutput' (layout( location=0) out 4-component vector of float)
+0:4        Function Call: @main(vf4;vf4;mf22; ( temp 4-component vector of float)
+0:?           'a' ( temp 4-component vector of float)
+0:?           'b' ( temp 4-component vector of float)
+0:?           'm' ( temp 2X2 matrix of float)
+0:?   Linker Objects
+0:?     '@entryPointOutput' (layout( location=0) out 4-component vector of float)
+0:?     'a' (layout( location=0) in 4-component vector of float)
+0:?     'b' (layout( location=1) in 4-component vector of float)
+0:?     'm' (layout( location=2) in 2X2 matrix of float)
+
+// Module Version 10000
+// Generated by (magic number): 8000b
+// Id's are bound by 118
+
+                              Capability Shader
+               1:             ExtInstImport  "GLSL.std.450"
+                              MemoryModel Logical GLSL450
+                              EntryPoint Fragment 4  "main" 100 103 107 110
+                              ExecutionMode 4 OriginUpperLeft
+                              Source HLSL 500
+                              Name 4  "main"
+                              Name 16  "@main(vf4;vf4;mf22;"
+                              Name 13  "a"
+                              Name 14  "b"
+                              Name 15  "m"
+                              Name 18  "r"
+                              Name 19  "@fmodx"
+                              Name 21  "@fmody"
+                              Name 83  "@fmodx"
+                              Name 85  "@fmody"
+                              Name 98  "a"
+                              Name 100  "a"
+                              Name 102  "b"
+                              Name 103  "b"
+                              Name 105  "m"
+                              Name 107  "m"
+                              Name 110  "@entryPointOutput"
+                              Name 111  "param"
+                              Name 113  "param"
+                              Name 115  "param"
+                              Decorate 100(a) Location 0
+                              Decorate 103(b) Location 1
+                              Decorate 107(m) Location 2
+                              Decorate 110(@entryPointOutput) Location 0
+               2:             TypeVoid
+               3:             TypeFunction 2
+               6:             TypeFloat 32
+               7:             TypeVector 6(float) 4
+               8:             TypePointer Function 7(fvec4)
+               9:             TypeVector 6(float) 2
+              10:             TypeMatrix 9(fvec2) 2
+              11:             TypePointer Function 10
+              12:             TypeFunction 7(fvec4) 8(ptr) 8(ptr) 11(ptr)
+              22:             TypeInt 32 0
+              23:     22(int) Constant 0
+              24:             TypePointer Function 6(float)
+              27:     22(int) Constant 1
+              30:     22(int) Constant 2
+              33:     22(int) Constant 3
+              36:    6(float) Constant 1065353216
+              37:    6(float) Constant 0
+              41:             TypeInt 32 1
+              42:     41(int) Constant 0
+              43:             TypePointer Function 9(fvec2)
+              56:     41(int) Constant 1
+              76:    6(float) Constant 3217031168
+              77:    6(float) Constant 1069547520
+              99:             TypePointer Input 7(fvec4)
+          100(a):     99(ptr) Variable Input
+          103(b):     99(ptr) Variable Input
+             106:             TypePointer Input 10
+          107(m):    106(ptr) Variable Input
+             109:             TypePointer Output 7(fvec4)
+110(@entryPointOutput):    109(ptr) Variable Output
+         4(main):           2 Function None 3
+               5:             Label
+           98(a):      8(ptr) Variable Function
+          102(b):      8(ptr) Variable Function
+          105(m):     11(ptr) Variable Function
+      111(param):      8(ptr) Variable Function
+      113(param):      8(ptr) Variable Function
+      115(param):     11(ptr) Variable Function
+             101:    7(fvec4) Load 100(a)
+                              Store 98(a) 101
+             104:    7(fvec4) Load 103(b)
+                              Store 102(b) 104
+             108:          10 Load 107(m)
+                              Store 105(m) 108
+             112:    7(fvec4) Load 98(a)
+                              Store 111(param) 112
+             114:    7(fvec4) Load 102(b)
+                              Store 113(param) 114
+             116:          10 Load 105(m)
+                              Store 115(param) 116
+             117:    7(fvec4) FunctionCall 16(@main(vf4;vf4;mf22;) 111(param) 113(param) 115(param)
+                              Store 110(@entryPointOutput) 117
+                              Return
+                              FunctionEnd
+16(@main(vf4;vf4;mf22;):    7(fvec4) Function None 12
+           13(a):      8(ptr) FunctionParameter
+           14(b):      8(ptr) FunctionParameter
+           15(m):     11(ptr) FunctionParameter
+              17:             Label
+           18(r):     11(ptr) Variable Function
+      19(@fmodx):     11(ptr) Variable Function
+      21(@fmody):     11(ptr) Variable Function
+      83(@fmodx):      8(ptr) Variable Function
+      85(@fmody):      8(ptr) Variable Function
+              20:          10 Load 15(m)
+                              Store 19(@fmodx) 20
+              25:     24(ptr) AccessChain 14(b) 23
+              26:    6(float) Load 25
+              28:     24(ptr) AccessChain 14(b) 27
+              29:    6(float) Load 28
+              31:     24(ptr) AccessChain 14(b) 30
+              32:    6(float) Load 31
+              34:     24(ptr) AccessChain 14(b) 33
+              35:    6(float) Load 34
+              38:    9(fvec2) CompositeConstruct 26 29
+              39:    9(fvec2) CompositeConstruct 32 35
+              40:          10 CompositeConstruct 38 39
+                              Store 21(@fmody) 40
+              44:     43(ptr) AccessChain 19(@fmodx) 42
+              45:    9(fvec2) Load 44
+              46:     43(ptr) AccessChain 21(@fmody) 42
+              47:    9(fvec2) Load 46
+              48:     43(ptr) AccessChain 19(@fmodx) 42
+              49:    9(fvec2) Load 48
+              50:     43(ptr) AccessChain 21(@fmody) 42
+              51:    9(fvec2) Load 50
+              52:    9(fvec2) FDiv 49 51
+              53:    9(fvec2) ExtInst 1(GLSL.std.450) 3(Trunc) 52
+              54:    9(fvec2) FMul 47 53
+              55:    9(fvec2) FSub 45 54
+              57:     43(ptr) AccessChain 19(@fmodx) 56
+              58:    9(fvec2) Load 57
+              59:     43(ptr) AccessChain 21(@fmody) 56
+              60:    9(fvec2) Load 59
+              61:     43(ptr) AccessChain 19(@fmodx) 56
+              62:    9(fvec2) Load 61
+              63:     43(ptr) AccessChain 21(@fmody) 56
+              64:    9(fvec2) Load 63
+              65:    9(fvec2) FDiv 62 64
+              66:    9(fvec2) ExtInst 1(GLSL.std.450) 3(Trunc) 65
+              67:    9(fvec2) FMul 60 66
+              68:    9(fvec2) FSub 58 67
+              69:    6(float) CompositeExtract 55 0
+              70:    6(float) CompositeExtract 55 1
+              71:    6(float) CompositeExtract 68 0
+              72:    6(float) CompositeExtract 68 1
+              73:    9(fvec2) CompositeConstruct 69 70
+              74:    9(fvec2) CompositeConstruct 71 72
+              75:          10 CompositeConstruct 73 74
+                              Store 18(r) 75
+              78:     24(ptr) AccessChain 18(r) 42 27
+              79:    6(float) Load 78
+              80:     24(ptr) AccessChain 18(r) 56 23
+              81:    6(float) Load 80
+              82:    7(fvec4) CompositeConstruct 76 77 79 81
+              84:    7(fvec4) Load 13(a)
+                              Store 83(@fmodx) 84
+              86:    7(fvec4) Load 14(b)
+                              Store 85(@fmody) 86
+              87:    7(fvec4) Load 83(@fmodx)
+              88:    7(fvec4) Load 85(@fmody)
+              89:    7(fvec4) Load 83(@fmodx)
+              90:    7(fvec4) Load 85(@fmody)
+              91:    7(fvec4) FDiv 89 90
+              92:    7(fvec4) ExtInst 1(GLSL.std.450) 3(Trunc) 91
+              93:    7(fvec4) FMul 88 92
+              94:    7(fvec4) FSub 87 93
+              95:    7(fvec4) FAdd 82 94
+                              ReturnValue 95
+                              FunctionEnd

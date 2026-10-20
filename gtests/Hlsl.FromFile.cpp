@@ -292,6 +292,7 @@ INSTANTIATE_TEST_SUITE_P(
         {"hlsl.intrinsics.double.frag", "PixelShaderFunction"},
         {"hlsl.intrinsics.f1632.frag", "main"},
         {"hlsl.intrinsics.f3216.frag", "main"},
+        {"hlsl.intrinsics.fmod.frag", "main"},
         {"hlsl.intrinsics.frag", "main"},
         {"hlsl.intrinsic.frexp.frag", "main"},
         {"hlsl.intrinsics.lit.frag", "PixelShaderFunction"},
