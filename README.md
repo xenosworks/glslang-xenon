@@ -7,15 +7,18 @@ compile their shaders on the console.
 [Dusklight](https://github.com/xenosworks/dusklight-xenon), Twilight Princess on
 [Aurora](https://github.com/xenosworks/aurora-xenon), draws through
 [vulkan4xenon](https://github.com/xenosworks/vulkan4xenon), a Vulkan layer on xsdk. Aurora writes a GLSL program for
-each combination of GPU state the game sets, so the programs a game needs only show up as it's played. Today they're
-compiled on a PC into a shader pack, and a program the pack doesn't hold isn't drawn. The plan is to compile such a
-program on the console the first time the game asks for it, and keep it: glslang turns its GLSL into SPIR-V, and
-xost, xsdk's shader compiler, turns the SPIR-V into the GPU's microcode
-([the plan](https://github.com/xenosworks/xsdk/blob/main/docs/scope/shader-compiling.md)).
+each combination of GPU state the game sets, so the programs a game needs only show up as it's played. A shader pack
+compiled on a PC holds the ones recorded so far. A program the pack doesn't hold is compiled on the console the first
+time the game asks for it, and kept on the hard disk: glslang turns its GLSL into SPIR-V, and xost, xsdk's shader
+compiler, turns the SPIR-V into the GPU's microcode
+([the plan](https://github.com/xenosworks/xsdk/blob/main/docs/scope/shader-compiling.md)). Played from nothing kept,
+Dusklight compiled 189 programs on the console this way, glslang's first in 919 ms as it started and the rest in
+23.9 ms on average (vulkan4xenon's docs/ROADMAP.md, milestone 13).
 
-So far, glslang compiles all 145 of Dusklight's programs on the console, each into the same SPIR-V the PC makes. How
-it's built and what changed are in [README-xsdk.md](README-xsdk.md). The changes are on the `xenon` branch, on
-glslang 16.3.0; upstream's README follows.
+On the console glslang makes the same SPIR-V the PC makes, for all 145 of Dusklight's programs it was first checked on.
+On the PC, it's the glslang xsdk compiles Shader Model 3 HLSL with: HLSL's `fmod` truncates, and D3D9's `b#` and `i#`
+registers are kept. How it's built and what changed are in [README-xsdk.md](README-xsdk.md). The changes are on the
+`xenon` branch, on glslang 16.3.0; upstream's README follows.
 
 ---
 
